@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_branchexpense_form_in" model="ir.ui.view">
+        <field name="name">Branch Expenses Inherit</field>
+        <field name="model">branch.expenses</field>
+        <field name="inherit_id" ref="mtc_cashbook.action_branchexpense_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount']" position="after">
+                <field name="expense_image" widget='image' width="200px" height="200px;"/>
+                <!--                       <field name="decoded_data"/>-->
+                <!--                        <field name="expense_image" widget="image" width="300px;" height="300px;"/>-->
+
+            </xpath>
+        </field>
+    </record>
+    <record id="fleet_transportation_approval_in" model="ir.ui.view">
+        <field name="name">Vehicle Request Approval Formt</field>
+        <field name="model">vehicle.requset.approval</field>
+        <field name="inherit_id" ref="transportation.menu_fleet_transportation_approval_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='allocate_vehicle_lines']/tree/field[@name='fuel_rate']" position="after">
+                <field name="disel_image" widget='image' class="oe_avatar"/>
+
+            </xpath>
+        </field>
+    </record>
+<!--    <record id="transportation.menu_fleet_transportation_approval_tree" model="ir.ui.view">-->
+<!--        <field name="name">Vehicle Request Approval tree</field>-->
+<!--        <field name="model">vehicle.requset.approval</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Vehicle Request" default_order="id desc" create="0" delete="0" decoration-success="state=='draft'" decoration-bf="state=='draft'">-->
+<!--                <field name="name"/>-->
+<!--                <field name="customer"/>-->
+<!--                <field name="route"/>-->
+<!--                <field name="req_branch" string="Branch"/>-->
+<!--                <field name="vehicle_id"/>-->
+<!--                <field name="total_vehicle_capacity_needed" string="Capacity"/>-->
+<!--                <field name="request_date"/>-->
+<!--                <field name="delivery_date"/>-->
+<!--                <field name="state"/>-->
+<!--                <field name="current_date" invisible="1"/>-->
+<!--                &lt;!&ndash;                <field name="current_date_1" invisible="1"/>&ndash;&gt;-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+    <record id="approval_mtc_tree_d" model="ir.ui.view">
+        <field name="name">Vehicle Request Approval tree</field>
+        <field name="model">vehicle.requset.approval</field>
+        <field name="inherit_id" ref="transportation.menu_fleet_transportation_approval_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='req_branch']" position="after">
+                <field name="vehicle_ids"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
